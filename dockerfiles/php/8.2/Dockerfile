@@ -30,8 +30,10 @@ RUN apt-get install -y --no-install-recommends \
             fish
 RUN docker-php-ext-install -j$(nproc) \
     bcmath ctype
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install -j$(nproc) \
-    dom fileinfo filter gd
+    dom fileinfo filter
 RUN docker-php-ext-install -j$(nproc) \
     iconv
 RUN docker-php-ext-install -j$(nproc) \
