@@ -60,7 +60,9 @@ RUN docker-php-ext-enable \
     redis
 
 RUN usermod -u 1000 www-data
+RUN groupmod -g 1000 www-data
 RUN chsh -s /usr/bin/fish www-data
+RUN chown -R www-data:www-data /var/www
 
 USER www-data
 
